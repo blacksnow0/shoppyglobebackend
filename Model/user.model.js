@@ -1,3 +1,5 @@
+// User model with the name email and password
+
 import mongoose from "mongoose";
 
 const userModel = mongoose.Schema({

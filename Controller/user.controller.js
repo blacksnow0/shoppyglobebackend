@@ -13,9 +13,7 @@ export async function login(req, res) {
 
     const payload = { id: user.id, email: email };
 
-    console.log(payload);
-
-    const accessToken = jwt.sign(payload, "SecretKey");
+    const accessToken = jwt.sign(payload, "SecretKey", { expiresIn: "10m" });
 
     res.status(200).json({ token: accessToken });
   } catch (err) {
@@ -39,9 +37,9 @@ export async function register(req, res) {
 
     const payload = { id: newUser.id, email: email };
 
-    const accessToken = jwt.sign(payload, "SecretKey");
+    const accessToken = jwt.sign(payload, "SecretKey", { expiresIn: "10m" });
 
-    res.status(200).json({ user: newUser, token: accessToken });
+    res.status(200).json({ token: accessToken });
   } catch (err) {
     res
       .status(500)
